@@ -1,0 +1,28 @@
+:host{
+display: flex;
+flex-direction: column;
+}
+
+.arrow-back {
+  padding: 15px 5px;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+
+  .avatar-img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .recipient-name {
+    font-size: 2rem;
+    margin: 8px;
+  }
+}

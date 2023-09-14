@@ -1,0 +1,4 @@
+<app-chat-list  (popupOpen)="visibilityPoupToggle()" *ngIf="(isOpenChat | async) === false || !isMobile"></app-chat-list>
+<app-chat-messenger (click)="sendFrameToRecipientUser()" (toggle)="  visibilityConversationInformationBoxToggle()" *ngIf="((isOpenChat | async) && !isOpenConversationInformation) || !isMobile "></app-chat-messenger>
+<app-conversation-information (toggle)="visibilityConversationInformationBoxToggle()" *ngIf="(isOpenChat | async) && isOpenConversationInformation" ></app-conversation-information>
+<app-profile-popup (popupClose)="visibilityPoupToggle()" *ngIf="isOpenPopup"></app-profile-popup>

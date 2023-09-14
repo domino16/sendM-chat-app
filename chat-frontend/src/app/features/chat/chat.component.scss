@@ -1,0 +1,47 @@
+:host {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+  color: white;
+}
+
+app-chat-list {
+  max-width: 700px;
+  width: 100%;
+}
+
+app-conversation-information {
+  max-width: 700px;
+  width: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+
+
+@media(width > 400px) {
+  app-chat-list {
+    min-width:360px
+  }
+
+  app-conversation-information {
+    min-width: 360px;
+  }
+}
+
+@media (width > 960px) {
+  app-chat-list {
+    width: 360px;
+  }
+
+  app-conversation-information {
+    width: 360px;
+  }
+  
+  app-chat-messenger{
+    width: 100%;
+  }
+}

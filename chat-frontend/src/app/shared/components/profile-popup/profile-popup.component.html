@@ -1,0 +1,59 @@
+<div class="popup" *ngIf="authUser$ | async as authUser">
+  <mat-icon class="close-icon" (click)="onClose()">close</mat-icon>
+  <img class="avatar-img" src="{{ authUser.avatarImg }}" alt="avatar" *ngIf="!imgResultAfterCompression"/>
+  <img class="avatar-img" [src]="imgResultAfterCompression" *ngIf="imgResultAfterCompression" alt="avatar"/>
+
+  <div *ngIf="errorMessage" class="error-msg">
+    <mat-icon>highlight_off</mat-icon>
+    {{ errorMessage }}
+  </div>
+  <ng-container *ngIf="!isEditMode">
+    <ul>
+      <li>
+        <span class="list-item-name">first name:</span>
+        <span class="list-item-text">{{ authUser.firstName }}</span>
+      </li>
+      <li>
+        <span class="list-item-name">last name:</span>
+        <span class="list-item-text">{{ authUser.lastName }}</span>
+      </li>
+      <li>
+        <span class="list-item-name">password:</span>
+        <span class="list-item-text">*********</span>
+      </li>
+      <li>
+        <span class="list-item-name">email:</span>
+        <span class="list-item-text">{{ authUser.email }}</span>
+      </li>
+    </ul>
+      <button mat-fab extended (click)="isEditMode = !isEditMode">edit</button>
+  </ng-container>
+  <ng-container *ngIf="isEditMode">
+        <button (click)="compressFile()">Upload Image</button>
+    
+    <form [formGroup]="editForm"  (submit)="editProfile()">
+      <ul>
+        <li>
+          <label class="list-item-name">first name:</label>
+          <input type="text" (input)="isChanged = true" class="list-item-input" formControlName="firstName" />
+        </li>
+        <li>
+          <label class="list-item-name">last name:</label>
+          <input type="text" (input)="isChanged = true" class="list-item-input" formControlName="lastName" />
+        </li>
+        <li>
+          <label class="list-item-name">password:</label>
+          <input class="list-item-input" placeholder="enter old password" formControlName="oldPassword" />
+          <input
+            type="text"
+            (input)="isChanged = true"
+            class="list-item-input new-password-input"
+            placeholder="enter new password"
+            formControlName="newPassword"
+          />
+        </li>
+      </ul>
+        <button class="save-button" [disabled]="!isChanged" mat-fab extended>save</button> 
+    </form>
+  </ng-container>
+</div>

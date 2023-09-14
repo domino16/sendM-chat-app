@@ -1,0 +1,41 @@
+<img routerLink="/" src="../../../assets/logo-gef167d036_640.png" alt="logo" />
+<h1>SendM</h1>
+<form [formGroup]="signupForm" (submit)="logInClick()">
+  <div *ngIf="errorMessage | async" class="error-msg">
+    <mat-icon>highlight_off</mat-icon>
+    {{ errorMessage | async }}
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>First name</mat-label>
+    <input type="text" matInput formControlName="firstName" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Last name</mat-label>
+    <input type="text" matInput formControlName="lastName" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="email" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput formControlName="password" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Re-enter password</mat-label>
+    <input type="password" matInput formControlName="repassword" />
+  </mat-form-field>
+  <!-- checkbox -->
+  <label class="pure-material-checkbox">
+    <input type="checkbox" />
+    <span>
+      I agree to the
+      <a href="/">terms</a>
+    </span>
+  </label>
+  <div class="signup-buttons-wrapper">
+    <button mat-fab extended>Sign Up</button>
+    <p fxFlexAlign="center" routerLink="/">or sign in</p>
+  </div>
+</form>
+<app-footer></app-footer>

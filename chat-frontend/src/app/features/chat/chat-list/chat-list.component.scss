@@ -1,0 +1,183 @@
+@import "src/styles/colors";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+//------------header styles----------------------------------------------------
+.chat-list-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 15px 0 8px;
+  height: 100px;
+
+  img {
+    width: 70px;
+    height: 70px;
+    margin-left: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  p {
+    font-size: 2rem;
+    margin-left: 10px;
+  }
+
+  mat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    padding: 17px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .profile-icon {
+    right: 0;
+    top: 15px;
+  }
+
+  .logout-icon {
+    right: 0;
+    bottom: 5px;
+  }
+
+  mat-icon:hover {
+    background-color: $dark-color-lighter;
+  }
+}
+
+.divider-line {
+  border-bottom: 1px solid rgba($color: $primary-color, $alpha: 40%);
+}
+
+mat-form-field {
+  margin-top: 10px;
+  width: calc(100% - 4px);
+  margin-left: 2px;
+
+  input {
+    color: $white !important;
+  }
+
+  // styles for untouched input
+  ::ng-deep .mdc-text-field .mdc-floating-label {
+    color: $white !important;
+    margin: 0 auto;
+  }
+
+  ::ng-deep .mdc-notched-outline > * {
+    border-color: $white !important;
+  }
+
+  // styles for untouched input
+  ::ng-deep .mdc-text-field--focused .mdc-notched-outline > * {
+    border-color: $primary-color !important;
+  }
+
+  ::ng-deep .mdc-text-field--focused .mdc-floating-label > * {
+    color: $primary-color !important;
+  }
+
+
+}
+::ng-deep .mat-mdc-option .mdc-list-item__primary-text{
+  margin: 0 auto !important;
+}
+//------------chat list styles----------------------------------------------------
+.chat-list-wrapper {
+  overflow-y: scroll;
+}
+
+.box {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 110px;
+  font-size: 1.6rem;
+  overflow: hidden;
+  border-radius: 10px;
+
+  &__left {
+    display: flex;
+    flex: 0 0 65px;
+    justify-content: flex-end;
+
+    img {
+      align-self: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  &__center {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    align-self: center;
+    overflow: hidden;
+    white-space: nowrap;
+    word-break: break-word;
+    margin-left: 8px;
+
+    p {
+      min-width: 100%;
+      margin: 2px 0;
+    }
+
+    span {
+      margin: 2px 0;
+      color: $gray-color;
+      font-size: 1.4rem;
+    }
+
+    .text-oveflow-ellipsis {
+      width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 62px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+
+    .last-message-date {
+      color: $gray-color;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .last-message-notification {
+      min-width: 15px;
+      min-height: 10px;
+      padding: 10%;
+      border-radius: 50%;
+      background-color: $primary-color;
+      text-align: center;
+      margin: 8px 0;
+    }
+  }
+}
+
+input[type="radio"] {
+  display: none;
+
+  &:checked {
+    + .box {
+      background-color: $dark-color-lighter;
+    }
+  }
+}

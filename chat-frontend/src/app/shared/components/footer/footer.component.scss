@@ -1,0 +1,60 @@
+@import "src/styles/colors";
+
+:host {
+  display: flex;
+  align-items: center;
+  max-width: 1400px;
+  height: 40px;
+  margin: 0 auto;
+  padding: 40px 30px 30px;
+  color: $white;
+  border-top: 1px solid rgba($color: $primary-color, $alpha: 50%);
+}
+
+.my-name {
+  flex: 1 1;
+  font-size: 1.6rem;
+}
+
+.right-side-icons{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 30px;
+
+  a{
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+fa-icon {
+  font-size: 3rem;
+  cursor: pointer;
+
+  &:hover {
+    animation: icon3d 0.2s infinite;
+  }
+}
+
+@keyframes icon3d {
+  0% {
+    filter: drop-shadow(3px 2px $redColor) drop-shadow(-2px -3px $blueColor);
+  }
+
+  25% {
+    filter: drop-shadow(-2px -3px $redColor) drop-shadow(3px 2px $blueColor);
+  }
+
+  50% {
+    filter: drop-shadow(3px -2px $redColor) drop-shadow(-4px 2px $blueColor);
+  }
+
+  75% {
+    filter: drop-shadow(-4px -2px $redColor) drop-shadow(3px -2px $blueColor);
+  }
+
+  100% {
+    filter: drop-shadow(-3px 0 $redColor) drop-shadow(3px -2px $blueColor);
+  }
+}

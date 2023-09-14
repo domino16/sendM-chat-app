@@ -1,0 +1,61 @@
+<div class="chat-list-header" [ngClass]="{ 'divider-line': showLine }">
+  <mat-icon class="profile-icon" (click)="onOpenPopup()">account_circle</mat-icon>
+  <mat-icon class="logout-icon" (click)="logout()">logout</mat-icon>
+  <img [src]="(authUser$ | async)?.avatarImg" alt="avatar" data-cache="no-cache" />
+  <p>{{ (authUser$ | async)?.firstName }} {{ (authUser$ | async)?.lastName }}</p>
+</div>
+<div class="chat-list-wrapper" (click)="sendFrameToRecipientUser()" (scroll)="onScroll($event)">
+  <mat-form-field appearance="outline" (click)="searchControl.setValue('');">
+    <mat-label>
+      Search friends
+      <fa-icon [icon]="faSearch"></fa-icon>
+    </mat-label>
+    <input
+      type="text"
+      aria-label="Number"
+      matInput
+      [formControl]="searchControl"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <ng-container *ngFor="let user of filteredAllUsers$ | async">
+        <mat-option
+        *ngIf="!isSearchUserLoading"
+          (click)="onUserSelect(user.email, user.firstName)"
+          [value]="user.email">
+          {{ user.firstName }} {{ user.lastName }}
+        </mat-option>
+        <mat-option *ngIf="!isSearchUserLoading && !user">User not found</mat-option>
+      </ng-container>
+      <mat-option *ngIf="isSearchUserLoading"><app-loading-spinner></app-loading-spinner></mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <label *ngFor="let chat of userChats$ | async">
+    <input
+      [checked]="(selectedChat$ | async)?.chatId === chat.chatId"
+      type="radio"
+      id="{{ chat.chatId }}"
+      name="radio"
+      (change)="onChatSelectChange(chat)"
+    />
+    <div class="box">
+      <div class="box__left">
+        <img src="{{ apiUrl }}/users/files/{{ chat.recipientId }}" alt="" />
+      </div>
+      <div class="box__center">
+        <p>{{ chat.recipientName }}</p>
+        <span
+          [ngStyle]="{ 'font-weight': chat.notificationNumber > 0 ? '500' : 'normal' }"
+          class="text-oveflow-ellipsis"
+        >
+          {{ chat.lastMessage }}
+        </span>
+      </div>
+      <div class="box__right">
+        <span class="last-message-date">{{ chat.lastMessageDate | dateFormat }}</span>
+        <p *ngIf="chat.notificationNumber > 0" class="last-message-notification">{{ chat.notificationNumber }}</p>
+      </div>
+    </div>
+  </label>
+</div>

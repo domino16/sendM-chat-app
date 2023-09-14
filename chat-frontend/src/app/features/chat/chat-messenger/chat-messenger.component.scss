@@ -1,0 +1,235 @@
+@import "src/styles/colors";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.chat-messenger {
+  // ####################  section header ##########################################
+  &__header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 80px;
+    font-size: 1.8rem;
+    border: 1px solid rgba($color: $primary-color, $alpha: 10%);
+
+    mat-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background-color 0.3s;
+      color: $primary-color;
+    }
+
+    mat-icon:hover {
+      background-color: $dark-color-lighter;
+    }
+
+    .arrow-back-header-icon {
+      position: absolute;
+      left: 8px;
+    }
+
+    .three-dot-header-icon {
+      position: absolute;
+      right: 8px;
+    }
+
+    img {
+      margin-right: 8px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+  }
+
+  //   #################### section messages ##########################################
+  &__messages {
+    display: flex;
+    position: relative;
+    flex-direction: column-reverse;
+    flex: 1 1;
+    width: 100%;
+    overflow-y: scroll;
+    border: 1px solid rgba($color: $primary-color, $alpha: 10%);
+
+    label {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message-bubble {
+      display: flex;
+      align-items: center;
+      max-width: 70%;
+      padding: 8px 12px;
+      text-align: left;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      border-radius: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      position: relative;
+      word-break: break-word;
+
+      &--right {
+        align-self: flex-end;
+        background-color: $primary-color;
+      }
+
+      &--left {
+        position: relative;
+        align-self: flex-start;
+        background-color: $dark-color-lighter;
+      }
+    }
+
+    .message-with-avatar-wrapper {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+
+    .img-avatar-beside-message {
+      margin: 0 8px 0 14px;
+      width: 3.5em;
+      height: 3.5em;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .bubble-divider {
+      width: 100%;
+      min-height: 9px;
+    }
+
+    .text-on-messages-top {
+      display: flex;
+      min-height: 36px;
+      max-height: 36px;
+      font-size: 1.6rem;
+      margin: 0 auto;
+      color: $gray-color;
+    }
+
+    .message-date {
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    .message-status {
+      &--left {
+        align-self: flex-start;
+        margin-left: 63px;
+      }
+
+      &--right {
+        align-self: flex-end;
+        margin-right: 10px;
+      }
+    }
+
+    app-delete-button {
+      position: absolute;
+      left: -38px;
+      transform: scale(0.6);
+    }
+
+    .message-date,
+    .message-status,
+    app-delete-button {
+      color: $gray-color;
+      display: none;
+    }
+
+    label input[type="radio"] {
+      display: none;
+
+      &:checked {
+        + .message-date,
+        ~ .message-status,
+        ~ app-delete-button,
+        ~ .message-bubble > app-delete-button {
+          display: block;
+        }
+      }
+    }
+  }
+
+  //   #################### sender section #########################################
+
+  &__sender {
+    display: flex;
+    flex: 0 0 60px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba($color: $primary-color, $alpha: 10%);
+
+    //input sender styles
+    input {
+      flex: 1 1;
+      width: 100%;
+      padding: 8px;
+      margin-left: 15px;
+      border: 0;
+      outline: 0;
+      background-color: $dark-color-lighter;
+      border-radius: 15px;
+      font-size: 1.6rem;
+      color: white;
+    }
+
+     mat-icon {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 0 0 50px;
+      font-size: 3rem;
+      color: $primary-color;
+      cursor: pointer;
+      overflow: visible;
+    }
+
+    mat-icon::after{
+      content: '';
+      position: absolute;
+      width: 4.2rem;
+      height: 4.2rem;
+      transition: background-color 0.3s;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    mat-icon:hover::after {
+      background-color: $dark-color-lighter;
+    }
+  }
+}
+
+//################## LoadingSpinner #####################
+.message-box-loading-spinner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-more-message-loading-spinner {
+  display: flex;
+  max-height: 36px;
+  margin: 0 auto;
+  top: 0;
+  transform: scale(0.5);
+}

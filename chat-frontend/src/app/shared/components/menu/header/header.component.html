@@ -1,0 +1,18 @@
+<!-- <div class="toolbar-wrapper" [ngClass]="{'scrolled': isScrolled }" (window:scroll)="onScroll()" > -->
+<app-sidenav *ngIf="isMenuActive" ></app-sidenav>
+<mat-toolbar (window:scroll)="onScroll()">
+  <div class="left-side-menu">
+  <div class="logo-wrapper">
+  <img  class="header-item" src="/assets/logo-gef167d036_640.webp" width="588" height="640" alt="logo" />
+  <div class="under-logo-shadow"></div></div>
+  <span class="logo-subtitle header-item">SendM</span></div>
+  		 <button id="burger" class="open-main-nav header-item" (click)="isMenuActive = !isMenuActive" [ngClass]="{'is-open': isMenuActive}" aria-label="menu">
+			<span class="burger"></span>
+		</button>
+  <ul class="navigation-right">
+    <li>About me</li>
+    <li routerLink="/signup">Sign Up</li>
+    <li><a href="https://www.linkedin.com/in/dominik-pietrzyk-02966225a/">Contact</a></li>
+  </ul>
+  <div class="bottom-line" @lineStretchAniamtion *ngIf="isScrolled && !isMenuActive" ></div>
+</mat-toolbar>

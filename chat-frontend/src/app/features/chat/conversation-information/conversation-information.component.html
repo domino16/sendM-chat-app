@@ -1,0 +1,10 @@
+<a class="arrow-back" (click)="onArrowClick()">
+  <mat-icon>arrow_back_ios_new</mat-icon>
+</a>
+
+<div class="wrapper" *ngIf="recipientUser$ | async as recipientUser">
+    <img class="avatar-img" src="{{apiUrl}}/users/files/{{recipientUser.email}}"  alt="avatar" />
+    <p class="recipient-name" >
+      {{ recipientUser.firstName }} {{ recipientUser.lastName }}
+    </p>
+</div>

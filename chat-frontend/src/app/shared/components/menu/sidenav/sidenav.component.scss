@@ -1,0 +1,95 @@
+@import "src/styles/colors";
+
+:host {
+  position: absolute;
+  inset: 0;
+  transition: all 0.375s;
+}
+
+/* Main menu positionning */
+.main-nav {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  background: $primary-color;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.375s;
+}
+
+// /* Yellow band effect */
+.main-nav::before {
+  content: "";
+  position: absolute;
+inset: 0;
+  right: -15px;
+  background: $dark-color;
+  transform-origin: 0 0;
+  transform: skew(-14deg) translateX(0);
+}
+
+// /* Skewing effect on menu links */
+.main-nav ul {
+  display: inline-flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: flex-end;
+  justify-content: center;
+  transform: translateX(-18%) skew(-16deg);
+}
+
+.main-nav li {
+  display: block;
+  margin: 0.5rem 0;
+  text-align: right;
+  transform: skew(16deg);
+  padding: 12px 0;
+  color: $white;
+  font-size: 1.4em;
+  text-decoration: none;
+  font-weight: bold;
+  opacity: 1;
+
+}
+
+// /* Apparition effect on links */
+.main-nav ul li a {
+  transform: translateY(-10px);
+  opacity: 0;
+    animation: fadeIn 1.8s ease-in-out forwards;
+}
+
+.main-nav ul li:nth-child(1) a {
+  
+  transition: all 275ms 175ms;
+}
+
+.main-nav ul li:nth-child(2) a {
+  transition: all 275ms 225ms;
+}
+
+.main-nav ul li:nth-child(3) a {
+  transition: all 275ms 275ms;
+}
+
+// /* Decoration */
+.main-nav ul,
+.main-nav li {
+  list-style: none;
+  padding: 10px 0;
+
+  a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}

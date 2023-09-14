@@ -1,0 +1,45 @@
+<app-header></app-header>
+<div class="home-wrapper">
+  <div class="home-side--left">
+    <h1>
+      Hang out
+      <br />
+      anytime, anywhere
+    </h1>
+    <h2>Simple, reliable messaging and private calls for free, available worldwide.</h2>
+
+    <!-- ######## signIn ######################### -->
+
+    <form [formGroup]="loginForm" (submit)="logInClick()">
+      <div *ngIf="errorMessage | async" class="error-msg">
+        <mat-icon>highlight_off</mat-icon>
+        {{ errorMessage | async }}
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="emailFormControl" />
+
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="passwordFormControl" />
+      </mat-form-field>
+      <div class="under-form-login-buttons">
+        <button mat-fab extended>Log In</button>
+        <p class="forgotten-password-paragraph" >Forgotten your password?</p>
+      </div>
+      <!-- checkbox -->
+      <label class="pure-material-checkbox">
+        <input type="checkbox">
+        <span>Keep me signed in</span>
+      </label>
+    </form>
+
+    <!-- ######## logo ##################### -->
+  </div>
+  <div class="home-side--right">
+    <img src="/assets/logo-gef167d036_640.webp" width="588" height="640" alt="logo" rel="preload"/>
+          <div class="under-logo-shadow"></div>
+  </div>
+</div>
+<app-footer></app-footer>

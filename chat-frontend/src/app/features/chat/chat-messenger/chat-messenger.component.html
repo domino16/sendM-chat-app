@@ -1,0 +1,65 @@
+<ng-container *ngIf="selectedChat$ | async as chat">
+  <app-loading-spinner
+    class="message-box-loading-spinner"
+    *ngIf="(isMessagesLoaded$ | async) === false"
+  ></app-loading-spinner>
+  <ng-container *ngIf="(isMessagesLoaded$ | async) === true">
+    <!-- ####################  section header ##########################################-->
+    <div class="chat-messenger__header">
+      <mat-icon class="arrow-back-header-icon" (click)="onArrowClick()">arrow_back_ios_new</mat-icon>
+      <img src="{{ apiUrl }}/users/files/{{ chat.recipientId }}" alt="logo" />
+      <span>{{ chat.recipientName }}</span>
+      <mat-icon class="three-dot-header-icon" (click)="onThreeDotClick()">more_vert</mat-icon>
+    </div>
+
+    <!-- #################### section messages ##########################################-->
+    <div class="chat-messenger__messages" (scroll)="onScroll($event)">
+      <div class="bubble-divider"></div>
+      <label *ngFor="let message of messages$ | async">
+        <input type="radio" name="message" [value]="message.id" />
+        <span class="message-date">{{ message.creationDate! | dateFormat }}</span>
+
+        <!-- #################### messages received ####################  -->
+        <ng-container *ngIf="chat.recipientId !== message.recipientId">
+          <div class="bubble-divider"></div>
+          <div class="message-with-avatar-wrapper">
+            <img class="img-avatar-beside-message" src="{{ apiUrl }}/users/files/{{ message.senderId }}" alt="avatar" />
+            <div class="message-bubble message-bubble--left">
+              {{ message.content }}
+            </div>
+          </div>
+          <span class="message-status message-status--left">viewed</span>
+        </ng-container>
+
+        <!-- #################### messages sent ####################  -->
+        <ng-container *ngIf="chat.recipientId === message.recipientId">
+          <div class="bubble-divider"></div>
+          <div class="message-bubble message-bubble--right">
+            {{ message.content }}
+            <app-delete-button (click)="deleteMessage(message.id!)"></app-delete-button>
+          </div>
+          <span class="message-status message-status--right">{{ message.messageStatus?.toLowerCase() }}</span>
+        </ng-container>
+      </label>
+
+      <!-- spinner and "All message Loaded" information on top of messages box  -->
+      <p class="text-on-messages-top" *ngIf="(isMoreMessagesLoading$ | async) === false">All messages loaded</p>
+      <app-loading-spinner
+        *ngIf="isMoreMessagesLoading$ | async"
+        class="loading-more-message-loading-spinner"
+      ></app-loading-spinner>
+    </div>
+
+    <!-- #################### send section #########################################-->
+    <div class="chat-messenger__sender">
+      <input
+        id="my-input"
+        type="text"
+        (keydown.enter)="onSendMessage()"
+        [formControl]="sendMessageControl"
+        placeholder="Write a message..."
+      />
+      <mat-icon (click)="onSendMessage()">send</mat-icon>
+    </div>
+  </ng-container>
+</ng-container>

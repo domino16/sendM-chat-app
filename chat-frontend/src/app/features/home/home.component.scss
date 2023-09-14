@@ -1,0 +1,300 @@
+@use "@angular/material" as mat;
+
+@import "src/styles/colors";
+@import "src/styles/variables";
+
+:host {
+  min-height: 100vh;
+  background-color: $dark-color;
+}
+
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: $header-height 35px 100px 35px;
+  max-width: 500px;
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 600;
+  letter-spacing: 0.5rem;
+  background: $home-h1-gradient;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0.5em 0;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  color: rgba($color: $white, $alpha: 80%);
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 1.5em;
+}
+
+.home-side--left{
+  flex: 1;
+}
+
+.home-side--right{
+position: relative;
+display: flex;
+flex: 1;
+align-items: center;
+justify-content: center;
+
+  img{
+    width: 300px;
+    height: auto;
+  }
+  
+  .under-logo-shadow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    background-color: $primary-color;
+    z-index: -1;
+    transition: 0.5s;
+     filter: blur(1em);
+  }
+
+  & img:hover ~ .under-logo-shadow {
+    width: 80px;
+    height: 80px;
+    filter: blur(5em);
+  }
+}
+
+.error-msg {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: #f74646;
+  text-align: left;
+  font-size: 1.6rem;
+
+  mat-icon{
+display: flex;
+align-items: center;
+justify-content: center;
+    font-size: 20px;
+  }
+}
+
+.forgotten-password-paragraph {
+  font-size: 1.5rem;
+  color: $primary-color;
+  text-decoration: underline;
+  margin-left: 1.5em;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.forgotten-password-paragraph:hover {
+ transform: scale(1.02);
+}
+
+
+//checkbox styles
+.pure-material-checkbox {
+  z-index: 0;
+  position: relative;
+  display: inline-block;
+  margin: 20px 0;
+  color: rgba($white, 0.87);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Input */
+.pure-material-checkbox > input {
+  appearance: none;
+  z-index: -1;
+  position: absolute;
+  left: -10px;
+  top: -8px;
+  display: block;
+  margin: 0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: rgba($primary-color, 0.6);
+  box-shadow: none;
+  outline: none;
+  opacity: 0;
+  transform: scale(1);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.2s;
+}
+
+/* Span */
+.pure-material-checkbox > span {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Box */
+.pure-material-checkbox > span::before {
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 3px 11px 3px 1px;
+  border: solid 2px; /* Safari */
+  border-color: rgba($white, 0.6);
+  border-radius: 2px;
+  width: 18px;
+  height: 18px;
+  vertical-align: top;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+/* Checkmark */
+.pure-material-checkbox > span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 1px;
+  width: 10px;
+  height: 5px;
+  border: solid 2px transparent;
+  border-right: none;
+  border-top: none;
+  transform: translate(3px, 4px) rotate(-45deg);
+}
+
+/* Checked, Indeterminate */
+.pure-material-checkbox > input:checked,
+.pure-material-checkbox > input:indeterminate {
+  background-color: $primary-color
+}
+
+.pure-material-checkbox > input:checked + span::before,
+.pure-material-checkbox > input:indeterminate + span::before {
+  border-color: $primary-color;
+  background-color: $primary-color;
+}
+
+.pure-material-checkbox > input:checked + span::after,
+.pure-material-checkbox > input:indeterminate + span::after {
+  border-color: $dark-color
+}
+
+.pure-material-checkbox > input:indeterminate + span::after {
+  border-left: none;
+  transform: translate(4px, 3px);
+}
+
+/* Hover, Focus */
+.pure-material-checkbox:hover > input {
+  opacity: 0.04;
+}
+
+.pure-material-checkbox > input:focus {
+  opacity: 0.12;
+}
+
+.pure-material-checkbox:hover > input:focus {
+  opacity: 0.16;
+}
+
+/* Active */
+.pure-material-checkbox > input:active {
+  opacity: 1;
+  transform: scale(0);
+  transition: transform 0s, opacity 0s;
+}
+
+.pure-material-checkbox > input:active + span::before {
+  border-color: $primary-color
+}
+
+.pure-material-checkbox > input:checked:active + span::before {
+  border-color: transparent;
+  background-color: rgba($primary-color, 0.6);
+}
+
+
+//#form styles
+input {
+  color: $white !important;
+}
+
+// styles for untouched input
+::ng-deep .mdc-text-field .mdc-floating-label {
+  color: $white !important;
+}
+
+::ng-deep .mdc-notched-outline > * {
+  border-color: $white !important;
+}
+
+
+// styles for untouched input
+::ng-deep .mdc-text-field--focused .mdc-notched-outline > * {
+  border-color: $primary-color !important;
+}
+
+::ng-deep .mdc-text-field--focused .mdc-floating-label > * {
+  color: $primary-color !important;
+}
+
+//styles for invalid input
+
+//get color from material red-pallete
+$matWarnPallete: mat.define-palette(mat.$red-palette);
+
+::ng-deep .mdc-text-field--invalid .mdc-notched-outline > * {
+  border-color: mat.get-color-from-palette($matWarnPallete, 500) !important;
+}
+
+::ng-deep .mdc-text-field--invalid .mdc-floating-label > * {
+  color: mat.get-color-from-palette($matWarnPallete, 500) !important;
+}
+
+.under-form-login-buttons{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+@media (width >= 600px) {
+  h1,
+  h3 {
+    text-align: center;
+  }
+}
+
+@media (width >= 960px) {
+  .home-wrapper {
+    flex-direction: row;
+    max-width: 1400px;
+  }
+
+  h1 {
+    font-size: 7em;
+    text-align: start;
+  }
+
+  h3 {
+    text-align: start;
+  }
+
+  mat-form-field{
+    width: 350px;
+  }
+
+  .error-msg{
+    width: 330px;
+  }
+}
