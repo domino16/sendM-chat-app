@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://chat-message-service.coqok0n4xaae.eu-central-1.rds.amazonaws.com:5432/
+    username: postgres
+    password: 12345678
+    driverClassName: org.postgresql.Driver
+  sql:
+    init:
+      mode: always # always validates spring init sql script db schema, even in not embedded DBs
+      continue-on-error: true
+#  cloud:
+#    gcp:
+#      sql:
+#        database-name: chatPostgresDB
+#        instance-connection-name: chat-app-396909:europe-central2:chat-messages-service
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+
+server:
+  compression:
+    enabled: true
+    server:
+      compression:
+        mime-types: application/json,application/xml,text/html,text/xml,text/plain,text/css,application/javascript,application/x-javascript,application/vnd.ms-fontobject,application/x-font-ttf,image/svg+xml,image/x-icon,application/pdf,image/jpeg,image/png,image/gif
+
+  port: 8081
+
+client:
+  location:
+    url: https://sendm.site
+
+jwt:
+  uri: /auth/**
+  header: Authorization
+  prefix: Bearer
+  expiration: 300
+  secret: JwtSuperBigFuckYeahWhatElseToWriteOMGSecretKey
+
+socket-server:
+  port: 8085
+

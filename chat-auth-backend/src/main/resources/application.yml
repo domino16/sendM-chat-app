@@ -1,0 +1,47 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://chat-auth-service.coqok0n4xaae.eu-central-1.rds.amazonaws.com:5432/
+    username: postgres
+    password: 12345678
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true # allows hibernate ddl auto and spring init sql to work together
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      continue-on-error: true
+      mode: always
+#  cloud:
+#    gcp:
+#      sql:
+#        database-name: chatDB
+#        instance-connection-name: chat-app-396909:europe-central2:chat-auth
+
+client:
+  location:
+    url: https://sendm.site
+
+
+logging:
+      level:
+        org.springframework: DEBUG
+
+server:
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain,text/css,application/javascript,application/x-javascript,application/vnd.ms-fontobject,application/x-font-ttf,image/svg+xml,image/x-icon,application/pdf,image/jpeg,image/png,image/gif
+
+jwt:
+  uri: /auth/**
+  header: Authorization
+  prefix: Bearer
+  expiration: 3000
+  secret: JwtSuperBigFuckYeahWhatElseToWriteOMGSecretKey
