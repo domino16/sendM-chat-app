@@ -31,7 +31,7 @@ Here is a working live demo :  https://sendm.site
 <p align="center">
   <p align="center">
     <a href="https://sendm.site/">
-      <img src="https://media1.giphy.com/media/Httu2q4FWTGfBUxhnv/giphy.gif" alt="Angular 15
+      <img src="https://media.giphy.com/media/Httu2q4FWTGfBUxhnv/giphy.gif" alt="Angular 15
       Application"/>
     </a>
   </p>
