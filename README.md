@@ -44,7 +44,7 @@ Here is a working live demo :  https://sendm.site
 <p align="center">
   <p align="center">
     <a href="https://sendm.site">
-      <img src="https://imgur.com/tWh5RKV" alt="sendM Lighthouse SEO Angular Example Demo"/>
+      <img src="https://i.imgur.com/tWh5RKV.png" alt="sendM Lighthouse SEO Angular Example Demo"/>
     </a>
   </p>
 </p>
