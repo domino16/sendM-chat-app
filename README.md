@@ -17,7 +17,7 @@ it's a repo designed to create a **Web Application with Angular 16**
 
 * Database - [**PostgreSQL**](https://www.postgresql.org/download/)
 
-* See the [**Live demo**](#live-demo), Test the repo with [**Quick start**](#quick-start) and for more information Read the step by step [**Tutorial**](#tutorial) or read the [**Getting started**](#getting-started)
+* See the [**Live demo**](#live-demo), Test the repo with [**Quick start**](#quick-start)
 
 
 </td>
