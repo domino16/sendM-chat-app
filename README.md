@@ -3,12 +3,7 @@
 <table>
 <tr>
 <td>
-  <a href="https://sendm.site">
-    <img src="./img/ganatan-about-github.png" align="right"
-    alt="sendM example demo" width="140" height="140">
-  </a>
-
-it's a repo designed to create a **Web Application with Angular 16**
+it's a repo designed to create a **Web Application with Angular 15**
 
 
 * Frontend - [**Angular 15.2**](https://github.com/angular/angular/releases)
@@ -157,7 +152,7 @@ pm2 start process.config.js --env prod
 
 ### Tests API & PostgreSQL
 * in your browser [http://localhost:8081/users](http://localhost:8081/users) 
-* in your browser [http://localhost:8080/chats](http://localhost:5004/chats) 
+* in your browser [http://localhost:8080/chats](http://localhost:8080/chats) 
 
 ### Author
 * Author  : Dominik Pietrzyk
