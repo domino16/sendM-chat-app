@@ -1,7 +1,7 @@
 
 spring:
   datasource:
-    url: jdbc:postgresql://chat-auth-service.coqok0n4xaae.eu-central-1.rds.amazonaws.com:5432/
+    url: jdbc:postgresql://localhost:5432/auth
     username: postgres
     password: 12345678
     driver-class-name: org.postgresql.Driver
